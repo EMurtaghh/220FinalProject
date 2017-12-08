@@ -14,7 +14,7 @@ Book::Book(std::string bookTitle, std::string bookAuthor, double bookPrice, int 
     this->waitList = new LinkedQueue();
 }
 //Book::Book(Book& bookToCopy){}; Will be done when needed
-//getters
+//getters----------------------------------------------------------------------------------------------
 std::string Book::getAuthor() {
     return bookAuthor;
 }
@@ -32,7 +32,7 @@ int Book::getHaveCount() {
 int Book::getWantCount() {
     return wantCount;
 }
-//setters
+//setters----------------------------------------------------------------------------------------------
 void Book::setPrice(double newPrice) {
     bookPrice=newPrice;
 }
@@ -53,6 +53,6 @@ void Book::setWantCount(int newCount) {
     this->wantCount = newCount;
 }
 
-//others
+//others----------------------------------------------------------------------------------------------
 
 
