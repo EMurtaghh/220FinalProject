@@ -6,7 +6,6 @@
 #define INC_220FINALPROJECT_BOOK_H
 
 #include <string>
-#include <w32api/cdoex.h>
 #include "Queue.h"
 #include "Person.h"
 
@@ -20,8 +19,9 @@ private:
     Queue* waitList;
 
 public:
-    //Constructor, Copy Constructor----------------------------------------------------------------------------------------------
+    //Constructor, Copy Constructor---------------------------------------------------------------------------------
     Book(std::string bookTitle, std::string bookAuthor, double bookPrice, int haveCount, int wantCount);
+    ~Book();
     //Book(Book& bookToCopy); Will be done when needed
     //Getter functions----------------------------------------------------------------------------------------------
     std::string getAuthor();
