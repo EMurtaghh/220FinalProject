@@ -6,6 +6,7 @@
 #define INC_220FINALPROJECT_BOOK_H
 
 #include <string>
+#include "Queue.h"
 
 class Book{
 private:
@@ -14,6 +15,7 @@ private:
     double bookPrice;
     int haveCount;
     int wantCount;
+    Queue* waitList;
 
 public:
     //Constructor, Copy Constructor
@@ -26,6 +28,10 @@ public:
     int getWantCount();
     double getPrice();
     //Setter functions
+    void setAuthor(std::string author);
+    void setTitle(std::string title);
+    void setHaveCount(int newCount);
+    void setWantCount(int newCount);
     void setPrice(double newPrice);
     //Other functions
 
