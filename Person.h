@@ -10,25 +10,24 @@
 class Person{
 private:
     std::string Name;
-    int phoneNumber;
+    std::string phoneNumber;
     std::string email;
-    string:: contactPref;
+    std::string contactPref;
 
 public:
     //Constructor, Copy Constructor---------------------------------------------------------------------------------
-    Person(std::string name, int num, std::string email, std::string pref);
-    //Person(Person& personToCopy); Will be done when needed
+    Person(std::string name, std::string num, std::string email, std::string pref);
     //Getter functions----------------------------------------------------------------------------------------------
     std::string getName();
-    int getNumber();
+    std::string getNumber();
     std::string getEmail();
     std::string getContactPreference();
     //Setter functions----------------------------------------------------------------------------------------------
-    void setName();
-    void setNumber();
-    void setEmail();
-    void setPreference();
-    //Other functions----------------------------------------------------------------------------------------------
+    void setName(std::string newName);
+    void setNumber(std::string num);
+    void setEmail(std::string email);
+    void setPreference(std::string pref);
+    //Other functions-----------------------------------------------------------------------------------------------
 
     //return printable version of person to display
     std::string toString();
