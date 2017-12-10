@@ -16,7 +16,7 @@ private:
     double bookPrice;
     int haveCount;
     int wantCount;
-    Queue* waitList;
+    Queue<Person>* waitList;
 
 public:
     //Constructor, Copy Constructor---------------------------------------------------------------------------------

@@ -16,7 +16,7 @@
  * to wait for something (first person in is the first person out)
  */
 template <class T>
-class LinkedQueue : public Queue {
+class LinkedQueue : public Queue<T>{
 private:
     T* front;
     T* end;

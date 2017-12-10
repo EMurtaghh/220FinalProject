@@ -5,6 +5,7 @@
 #include "Bookstore.h"
 
 int main() {
+    /* prototype one
     int choice = 0;
     Bookstore* myStore = new Bookstore;
     while(choice!=2){
@@ -21,5 +22,9 @@ int main() {
     myStore->printLibrary();
     std::cout<<"Goodbye"<<std::endl;
     delete myStore;
+    */
 
+    //testing person toString
+    Person* person = new Person("Bradley Keith","(607)749-0105","bnkeith.20@gmail.com","email");
+    std::cout<<person->toString()<<std::endl;
 }
