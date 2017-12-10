@@ -44,3 +44,10 @@ void Person::setPreference(std::string pref) {
     this->contactPref = pref;
 }
 //Other functions-----------------------------------------------------------------------------------------------
+
+std::string Person::toString() {
+    std::string myStr = "Name: " + this->Name +""
+                        "Number: " + this->phoneNumber +""
+                        "Email: " + this->email + ""
+                        "Contact Preference: " + this->contactPref;
+}
