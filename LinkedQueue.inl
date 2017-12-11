@@ -18,13 +18,13 @@ LinkedQueue<T>::LinkedQueue(const LinkedQueue& queueToCopy){
         end = nullptr;
     }
     else {
-        LinkedNode* nodeToCopy = queueToCopy.front;
-        front = new LinkedNode(nodeToCopy->getItem());
-        LinkedNode* endOfNewChain = front;
+        LinkedNode<T>* nodeToCopy = queueToCopy.front;
+        front = new LinkedNode<T>(nodeToCopy->getItem());
+        LinkedNode<T>* endOfNewChain = front;
 
         nodeToCopy = nodeToCopy->getNext();
         while (nodeToCopy != nullptr){
-            LinkedNode* newNode = new LinkedNode(nodeToCopy->getItem());
+            LinkedNode<T>* newNode = new LinkedNode<T>(nodeToCopy->getItem());
             endOfNewChain->setNext(newNode);
             endOfNewChain = newNode;
             nodeToCopy = nodeToCopy->getNext();
@@ -37,7 +37,7 @@ LinkedQueue<T>::LinkedQueue(const LinkedQueue& queueToCopy){
 template <class T>
 LinkedQueue<T>::~LinkedQueue(){
     while (front != nullptr){
-        T* toDelete = end;
+        LinkedNode<T>* toDelete = end;
         front = front->getNext();
         delete toDelete;
     }
@@ -47,7 +47,7 @@ LinkedQueue<T>::~LinkedQueue(){
 //adds an item to the end of the queue
 template <class T>
 void LinkedQueue<T>::enqueue(T item){
-    T* newNode = new LinkedNode(item);
+    LinkedNode<T>* newNode = new LinkedNode<T>(item);
     //if front is nullptr, end should be nullptr too
     if (front == nullptr){
         front = newNode;
@@ -73,7 +73,7 @@ T LinkedQueue<T>::dequeue(){
             front = nullptr;
             end = nullptr;
         } else {
-            LinkedNode* toDelete = front;
+            LinkedNode<T>* toDelete = front;
             front = front->getNext();
             delete toDelete;
         }

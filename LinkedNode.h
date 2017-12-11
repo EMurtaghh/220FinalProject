@@ -7,20 +7,21 @@
 
 #include <string>
 
+template <class T>
 class LinkedNode {
 
 private:
-    std::string item;
+    T item;
     LinkedNode* next;
 
 public:
-    LinkedNode(std::string item);
+    LinkedNode(T item);
     LinkedNode(const LinkedNode& nodeToCopy); //only copies item, next is set to nullptr
-    std::string getItem();
+    T getItem();
     LinkedNode* getNext();
-    void setItem(std::string newItem);
+    void setItem(T newItem);
     void setNext(LinkedNode* newNext);
 };
 
-
+#include "LinkedNode.inl"
 #endif //LINKEDNODE_H
