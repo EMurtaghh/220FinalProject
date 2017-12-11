@@ -18,8 +18,8 @@
 template <class T>
 class LinkedQueue : public Queue<T>{
 private:
-    T* front;
-    T* end;
+    LinkedNode* front;
+    LinkedNode* end;
 
 public:
     
