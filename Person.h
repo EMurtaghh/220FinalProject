@@ -36,6 +36,9 @@ public:
     //return version of person in format to be saved in the text file
     std::string toSave();
 
+    //allows user to view info and change if needed
+    void edit();
+
 };
 
 #endif //INC_220FINALPROJECT_PERSON_H
