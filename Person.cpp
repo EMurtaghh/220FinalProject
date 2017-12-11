@@ -2,6 +2,7 @@
 // Person.cpp
 //
 #include <iostream>
+#include <string>
 #include "Person.h"
 
 //Constructor, Copy Constructor---------------------------------------------------------------------------------
@@ -10,6 +11,13 @@ Person::Person(std::string name, std::string num, std::string email, std::string
     this->phoneNumber=num;
     this->email=email;
     this->contactPref=pref;
+}
+
+Person::Person(){
+    this->Name="";
+    this->phoneNumber="";
+    this->email="";
+    this->contactPref="";
 }
 //Getter functions----------------------------------------------------------------------------------------------
 std::string Person::getName() {
@@ -46,8 +54,5 @@ void Person::setPreference(std::string pref) {
 //Other functions-----------------------------------------------------------------------------------------------
 
 std::string Person::toString() {
-    std::string myStr = "Name: " + this->Name +""
-                        "Number: " + this->phoneNumber +""
-                        "Email: " + this->email + ""
-                        "Contact Preference: " + this->contactPref;
+    std::string myStr = "poop";
 }

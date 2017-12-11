@@ -7,6 +7,7 @@
 
 #include <string>
 #include <stdexcept>
+#include "LinkedNode.h"
 
 /**
  * Represents a FIFO data structure (First In First Out). Picture a line
