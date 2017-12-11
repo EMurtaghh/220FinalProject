@@ -7,52 +7,53 @@
 
 //Constructor, Copy Constructor---------------------------------------------------------------------------------
 Person::Person(std::string name, std::string num, std::string email, std::string pref) {
-    this->Name=name;
-    this->phoneNumber=num;
-    this->email=email;
-    this->contactPref=pref;
+    clientName=name;
+    phoneNumber=num;
+    clientEmail=email;
+    contactPref=pref;
 }
 
 Person::Person(){
-    this->Name="";
-    this->phoneNumber="";
-    this->email="";
-    this->contactPref="";
+    clientName="";
+    phoneNumber="";
+    clientEmail="";
+    contactPref="";
 }
 //Getter functions----------------------------------------------------------------------------------------------
 std::string Person::getName() {
-    return this->Name;
+    return clientName;
 }
 
 std::string Person::getNumber() {
-    return this->phoneNumber;
+    return phoneNumber;
 }
 
 std::string Person::getEmail() {
-    return this->email;
+    return clientEmail;
 }
 
 std::string Person::getContactPreference() {
-    return this->contactPref;
+    return contactPref;
 }
 //Setter functions----------------------------------------------------------------------------------------------
 void Person::setName(std::string newName) {
-    this->Name = newName;
+    clientName = newName;
 }
 
 void Person::setNumber(std::string num) {
-    this->phoneNumber = num;
+    phoneNumber = num;
 }
 
 void Person::setEmail(std::string email) {
-    this->email = email;
+    clientEmail = email;
 }
 
 void Person::setPreference(std::string pref) {
-    this->contactPref = pref;
+    contactPref = pref;
 }
 //Other functions-----------------------------------------------------------------------------------------------
 
 std::string Person::toString() {
-    std::string myStr = "poop";
+    std::string myStr = clientName + " " + phoneNumber + " " + clientEmail + " " + contactPref;
+    return myStr;
 }

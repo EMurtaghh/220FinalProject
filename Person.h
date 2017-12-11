@@ -9,9 +9,9 @@
 
 class Person{
 private:
-    std::string Name;
+    std::string clientName;
     std::string phoneNumber;
-    std::string email;
+    std::string clientEmail;
     std::string contactPref;
 
 public:
