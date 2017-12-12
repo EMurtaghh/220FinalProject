@@ -29,6 +29,7 @@ public:
     int getHaveCount();
     int getWantCount();
     double getPrice();
+    Queue<Person>* getWaitList();
     //Setter functions----------------------------------------------------------------------------------------------
     void setAuthor(std::string author);
     void setTitle(std::string title);
@@ -42,7 +43,7 @@ public:
     int sell();
 
     //adds new person to the waitList-- just needs to call the function from Queue
-    void addToWaitList(Person* toAdd);//person is red because the class is not defined yet i think
+    void addToWaitList(Person* toAdd);
 
     //adds amountToAdd books to the have value and sells to the customers in the waitlist if there are any
     //@return the new haveCount for the book

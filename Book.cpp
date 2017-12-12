@@ -32,6 +32,9 @@ int Book::getHaveCount() {
 int Book::getWantCount() {
     return wantCount;
 }
+Queue<Person>* Book::getWaitList(){ //should be const
+    return waitList;
+}
 //setters----------------------------------------------------------------------------------------------
 void Book::setPrice(double newPrice) {
     bookPrice=newPrice;
@@ -62,5 +65,22 @@ int Book::sell(){
         this->haveCount--;
         return 1;
     }
+}
+void Book::addToWaitList(Person *toAdd) {
+    this->waitList->enqueue(*toAdd);
+}
+int Book::stock(int amountToAdd){
+    if((!waitList->isEmpty())&&(this->haveCount+amountToAdd)>0){
+        this->waitList->dequeue();
+        amountToAdd--;
+    }
+    if(amountToAdd>0){
+        return this->haveCount+amountToAdd;
+    }else{
+        return this->haveCount;
+    }
+}
+std::string Book::toString() {
+    return this->bookTitle+" by "+this->bookAuthor+" is $"+std::to_string((int)this->bookPrice);
 }
 
