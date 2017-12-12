@@ -14,6 +14,13 @@ Library::~Library(){
     delete list;
 }
 
+//may want to change later to make recursive for efficiency
 void Library::add(Book *toAdd) {
-    
+    int index = 0;
+    while((toAdd->getTitle()>list->getValueAt(index)->getTitle())&&(index<list->itemCount())){
+        index++;
+    }
+    list->insertAt(toAdd,index);
 }
+
+
