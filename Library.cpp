@@ -35,7 +35,26 @@ int Library::sell(std::string title) {
 }
 
 void  Library::printList() {
-    
+    for(int i = 0;1<list->itemCount();i++){
+        std::cout<<list->getValueAt(i)->getTitle()<<std::endl;
+        std::cout<<"by "<<list->getValueAt(i)->getAuthor()<<std::endl;
+        std::cout<<"$"<<list->getValueAt(i)->getPrice()<<std::endl;
+        std::cout<<list->getValueAt(i)->getHaveCount()<<" copies in stock"<<std::endl;
+        std::cout<<list->getValueAt(i)->getWantCount()<<" copies should be in stock"<<std::endl;
+        std::cout<<"Customers waiting for book:"<<std::endl;
+
+    }
+}
+
+int Library::find(std::string title) {//probably want to implement binfind later
+    int index = 0;
+    while((title>=list->getValueAt(index)->getTitle())&&(index<list->itemCount())){
+        if(title==list->getValueAt(index)->getTitle()){
+            return index;
+        }
+        index++;
+    }
+    return -1;
 }
 
 
