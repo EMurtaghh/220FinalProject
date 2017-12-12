@@ -54,5 +54,13 @@ void Book::setWantCount(int newCount) {
 }
 
 //others----------------------------------------------------------------------------------------------
-
+int Book::sell(){
+    if(this->haveCount==0){
+        std::cout<<"Book count is out of stock."<<std::endl;
+        return 0;
+    }else if(this->haveCount>0){
+        this->haveCount--;
+        return 1;
+    }
+}
 
