@@ -46,4 +46,15 @@ void  Library::printList() {
     }
 }
 
+int Library::find(std::string title) {//probably want to implement binfind later
+    int index = 0;
+    while((title>=list->getValueAt(index)->getTitle())&&(index<list->itemCount())){
+        if(title==list->getValueAt(index)->getTitle()){
+            return index;
+        }
+        index++;
+    }
+    return -1;
+}
+
 
