@@ -29,7 +29,12 @@ void Library::add(Book *toAdd) {
     }
 }
 
-void Library::sell(std::string title) {
+int Library::sell(std::string title) {
+    int index = find(title);
+    return list->getValueAt(index)->sell();
+}
+
+void  Library::printList() {
     
 }
 
