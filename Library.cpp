@@ -42,7 +42,6 @@ void  Library::printList() {
         std::cout<<list->getValueAt(i)->getHaveCount()<<" copies in stock"<<std::endl;
         std::cout<<list->getValueAt(i)->getWantCount()<<" copies should be in stock"<<std::endl;
         std::cout<<"Customers waiting for book:"<<std::endl;
-
     }
 }
 
