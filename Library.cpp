@@ -14,6 +14,28 @@ Library::~Library(){
     delete list;
 }
 
+//may want to change later to make recursive for efficiency
 void Library::add(Book *toAdd) {
+    int index = 0;
+    while((toAdd->getTitle()>list->getValueAt(index)->getTitle())&&(index<list->itemCount())){
+        index++;
+    }
+    if(toAdd->getTitle()==list->getValueAt(index)->getTitle()){
+        list->getValueAt(index)->stock(toAdd->getHaveCount());
+        delete toAdd;
+    }
+    else {
+        list->insertAt(toAdd, index);
+    }
+}
+
+int Library::sell(std::string title) {
+    int index = find(title);
+    return list->getValueAt(index)->sell();
+}
+
+void  Library::printList() {
     
 }
+
+
