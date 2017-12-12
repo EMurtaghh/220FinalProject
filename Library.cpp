@@ -20,7 +20,17 @@ void Library::add(Book *toAdd) {
     while((toAdd->getTitle()>list->getValueAt(index)->getTitle())&&(index<list->itemCount())){
         index++;
     }
-    list->insertAt(toAdd,index);
+    if(toAdd->getTitle()==list->getValueAt(index)->getTitle()){
+        list->getValueAt(index)->stock(toAdd->getHaveCount());
+        delete toAdd;
+    }
+    else {
+        list->insertAt(toAdd, index);
+    }
+}
+
+void Library::sell(std::string title) {
+    
 }
 
 

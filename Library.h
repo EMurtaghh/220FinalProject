@@ -23,6 +23,8 @@ public:
     void sell(std::string title);//find book and sell it or prompt to enter info and add to waitList
     void printList();
     void save();
+    int find(std::string title);//return index or -1 if not in library
+
 
 };
 
