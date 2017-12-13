@@ -29,6 +29,11 @@ void Library::add(Book *toAdd) {
     }
 }
 
+int Library::stock(std::string title, int numBooks) {
+    int index = find(title);
+    return list->getValueAt(index)->stock(numBooks);
+}
+
 void Library::getInfo(std::string title) {
     int index=find(title);
     std::cout<<list->getValueAt(index)->getTitle()<<std::endl;
@@ -36,7 +41,7 @@ void Library::getInfo(std::string title) {
     std::cout<<"$"<<list->getValueAt(index)->getPrice()<<std::endl;
     std::cout<<list->getValueAt(index)->getHaveCount()<<" copies in stock"<<std::endl;
     std::cout<<list->getValueAt(index)->getWantCount()<<" copies should be in stock"<<std::endl;
-    td::cout<<"Customers waiting for book:"<<std::endl;
+    std::cout<<"Customers waiting for book: "<<list->getValueAt(index)->getWaitList()->getItemCount()<<std::endl;
 }
 
 int Library::sell(std::string title) {
@@ -51,7 +56,7 @@ void  Library::printList() {
         std::cout<<"$"<<list->getValueAt(i)->getPrice()<<std::endl;
         std::cout<<list->getValueAt(i)->getHaveCount()<<" copies in stock"<<std::endl;
         std::cout<<list->getValueAt(i)->getWantCount()<<" copies should be in stock"<<std::endl;
-        std::cout<<"Customers waiting for book:"<<std::endl;
+        std::cout<<"Customers waiting for book: "<<list->getValueAt(i)->getWaitList()->getItemCount()<<std::endl;
     }
 }
 
