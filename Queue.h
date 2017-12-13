@@ -30,6 +30,8 @@ public:
     //returns true if the queue has no items, false otherwise
     virtual bool isEmpty()=0;
 
+    virtual int getItemCount()=0;
+
 };
 
 #endif //STACKSANDQUEUES_QUEUE_H

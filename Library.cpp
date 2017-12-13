@@ -36,6 +36,7 @@ void Library::getInfo(std::string title) {
     std::cout<<"$"<<list->getValueAt(index)->getPrice()<<std::endl;
     std::cout<<list->getValueAt(index)->getHaveCount()<<" copies in stock"<<std::endl;
     std::cout<<list->getValueAt(index)->getWantCount()<<" copies should be in stock"<<std::endl;
+    td::cout<<"Customers waiting for book:"<<std::endl;
 }
 
 int Library::sell(std::string title) {
