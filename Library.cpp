@@ -29,6 +29,15 @@ void Library::add(Book *toAdd) {
     }
 }
 
+void Library::getInfo(std::string title) {
+    int index=find(title);
+    std::cout<<list->getValueAt(index)->getTitle()<<std::endl;
+    std::cout<<"by "<<list->getValueAt(index)->getAuthor()<<std::endl;
+    std::cout<<"$"<<list->getValueAt(index)->getPrice()<<std::endl;
+    std::cout<<list->getValueAt(index)->getHaveCount()<<" copies in stock"<<std::endl;
+    std::cout<<list->getValueAt(index)->getWantCount()<<" copies should be in stock"<<std::endl;
+}
+
 int Library::sell(std::string title) {
     int index = find(title);
     return list->getValueAt(index)->sell();
