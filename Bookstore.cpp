@@ -30,7 +30,21 @@ int checkIfInt(std::string value){
 }
 
 double checkIfDouble(std::string value){
-    
+    try{
+        double toReturn = std::stod(value);
+        if(toReturn<0){
+            return -1;
+        }
+        toReturn = toReturn*100;
+        int dollars = (int)toReturn;
+        toReturn = (double)dollars;
+        toReturn = toReturn/100;
+        return toReturn;
+    }
+    catch(const std::invalid_argument& e) {
+        std::cout<<"Error: Please enter a real number"<<std::endl;
+        return -1;
+    }
 }
 
 void Bookstore::addBook() {
@@ -43,8 +57,12 @@ void Bookstore::addBook() {
     std::getline(std::cin,author);
     //std::cout<<author<<std::endl;
     std::string price;
+    double priced = -1;
     std::cout<<"Please enter book price:"<<std::endl;
-    std::getline(std::cin,price);
+    while(priced==-1) {
+        std::getline(std::cin, price);
+        ::checkIfDouble(price);
+    }
     //std::cout<<price<<std::endl;
     std::string have;
     int haveint = -1;
@@ -62,26 +80,12 @@ void Bookstore::addBook() {
         wantint = ::checkIfInt(want);
     }
     //std::cout<<want<<std::endl;
-    Book* bookToAdd = new Book(title,author,price,haveint,wantint);
+    Book* bookToAdd = new Book(title,author,priced,haveint,wantint);
     inventory->add(bookToAdd);
+
+    //ToDo print out info of book added and offer for edits to be made
 }
 
 void Bookstore::printLibrary() {
-    if(library->itemCount()==0){
-std::cout<<"Library empty!"<<std::endl;
-    }
-    else {
-        for (int i = 0; i < library->itemCount(); ++i) {
-            std::cout << " " << std::endl;
-            Book* current = library->getValueAt(i);
-            std::cout << current->getTitle();
-            std::cout << " by ";
-            std::cout << current->getAuthor();
-            std::cout << " $";
-            std::cout << current->getPrice();
-            std::cout << " have ";
-            std::cout << current->getHaveCount();
-            std::cout << " copies" << std::endl;
-        }
-    }
+    inventory->printList();
 }

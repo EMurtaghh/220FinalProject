@@ -51,9 +51,7 @@ public:
 
     //returns a printable version of the book with all info that should be shown when the book is listed
     std::string toString();
-
-    //returns a printable version of the book in the format of how the book should be saved to the text file
-    std::string toSave();
+    
 
 
 

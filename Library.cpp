@@ -52,13 +52,19 @@ int Library::sell(std::string title) {
 }
 
 void  Library::printList() {
+    std::cout<<"Inventory:"<<std::endl;
+    if(list->isEmpty()){
+        std::cout<<"    Inventory is empty"<<std::endl;
+        std::cout<<" "<<std::endl;
+    }
     for(int i = 0;1<list->itemCount();i++){
-        std::cout<<list->getValueAt(i)->getTitle()<<std::endl;
-        std::cout<<"by "<<list->getValueAt(i)->getAuthor()<<std::endl;
-        std::cout<<"$"<<list->getValueAt(i)->getPrice()<<std::endl;
-        std::cout<<list->getValueAt(i)->getHaveCount()<<" copies in stock"<<std::endl;
-        std::cout<<list->getValueAt(i)->getWantCount()<<" copies should be in stock"<<std::endl;
-        std::cout<<"Customers waiting for book: "<<list->getValueAt(i)->getWaitList()->getItemCount()<<std::endl;
+        std::cout<<"    "<<list->getValueAt(i)->getTitle()<<std::endl;
+        std::cout<<"    "<<"by "<<list->getValueAt(i)->getAuthor()<<std::endl;
+        std::cout<<"    "<<"$"<<list->getValueAt(i)->getPrice()<<std::endl;
+        std::cout<<"    "<<list->getValueAt(i)->getHaveCount()<<" copies in stock"<<std::endl;
+        std::cout<<"    "<<list->getValueAt(i)->getWantCount()<<" copies should be in stock"<<std::endl;
+        std::cout<<"    "<<"Customers waiting for book: "<<list->getValueAt(i)->getWaitList()->getItemCount()<<std::endl;
+        std::cout<<" "<<std::endl;
     }
 }
 

@@ -84,6 +84,6 @@ int Book::stock(int amountToAdd){
     }
 }
 std::string Book::toString() {
-    return this->bookTitle+" by "+this->bookAuthor+" is $"+std::to_string((int)this->bookPrice);
+    return this->bookTitle+" by "+this->bookAuthor+" is $"+std::to_string(this->bookPrice);
 }
 
