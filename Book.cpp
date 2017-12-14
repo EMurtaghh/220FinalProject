@@ -14,6 +14,9 @@ Book::Book(std::string bookTitle, std::string bookAuthor, double bookPrice, int 
     this->waitList = new LinkedQueue<Person>();
 }
 //Book::Book(Book& bookToCopy){}; Will be done when needed
+Book::~Book() {
+    delete waitList;
+}
 //getters----------------------------------------------------------------------------------------------
 std::string Book::getAuthor() {
     return bookAuthor;
