@@ -8,6 +8,7 @@
 #include <exception>
 #include <ios>
 #include <fstream>
+#include <sstream>
 
 Bookstore::Bookstore() {
     inventory = new Library();
@@ -113,10 +114,16 @@ void Bookstore::quit() {
 void Bookstore::run() {
     //ToDo read in from file
     std::ifstream inFile("storeMemory.txt");
-    while(inFile){
-        std::string bookLine;
-        std::string title;
-        
+    if(inFile) {
+        while (inFile) {
+            std::string bookLine;
+            std::stringstream Line(bookLine);
+            getline(inFile,bookLine);
+            std::string title;
+            getline(Line, title, ",");
+        }
+    }
+
     }
 
 
