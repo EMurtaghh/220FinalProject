@@ -16,20 +16,21 @@ Bookstore::~Bookstore() {
 }
 
 int checkIfInt(std::string value){
-    bool good = false;
-    int toReturn;
-    while(!good) {
-        good=true;
-        try {
-            toReturn = std::stoi(value);
+    try {
+        int toReturn = std::stoi(value);
+        if(toReturn<0){
+            return -1;
         }
-        catch (const std::invalid_argument &e) {
-            good= false;
-            std::cout<<"Error: Please enter a string"<<std::endl;
-        }
+        return toReturn;
     }
-    toReturn = std::stoi(value);
-    return toReturn;
+    catch (const std::invalid_argument &e) {
+        std::cout<<"Error: Please enter an integer"<<std::endl;
+        return -1;
+    }
+}
+
+double checkIfDouble(std::string value){
+    
 }
 
 void Bookstore::addBook() {
@@ -46,14 +47,22 @@ void Bookstore::addBook() {
     std::getline(std::cin,price);
     //std::cout<<price<<std::endl;
     std::string have;
-    std::cout<<"Please enter quantity have:"<<std::endl;
-    std::getline(std::cin,have);
+    int haveint = -1;
+    std::cout << "Please enter quantity have:" << std::endl;
+    while(haveint==-1) {
+        std::getline(std::cin, have);
+        haveint = ::checkIfInt(have);
+    }
     //std::cout<<have<<std::endl;
     std::string want;
+    int wantint = -1;
     std::cout<<"Please enter quantity want:"<<std::endl;
-    std::getline(std::cin,want);
+    while(wantint==-1) {
+        std::getline(std::cin, want);
+        wantint = ::checkIfInt(want);
+    }
     //std::cout<<want<<std::endl;
-    Book* bookToAdd = new Book(title,author,price,have,want);
+    Book* bookToAdd = new Book(title,author,price,haveint,wantint);
     inventory->add(bookToAdd);
 }
 
