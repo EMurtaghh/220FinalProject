@@ -14,6 +14,9 @@ Book::Book(std::string bookTitle, std::string bookAuthor, double bookPrice, int 
     this->waitList = new LinkedQueue<Person>();
 }
 //Book::Book(Book& bookToCopy){}; Will be done when needed
+Book::~Book() {
+    delete waitList;
+}
 //getters----------------------------------------------------------------------------------------------
 std::string Book::getAuthor() {
     return bookAuthor;
@@ -81,7 +84,7 @@ int Book::stock(int amountToAdd){
     }
 }
 std::string Book::toString() {
-    return this->bookTitle+" by "+this->bookAuthor+" is $"+std::to_string((int)this->bookPrice);
+    return this->bookTitle+" by "+this->bookAuthor+" is $"+std::to_string(this->bookPrice);
 }
 std::string Book::toSave() {
 
