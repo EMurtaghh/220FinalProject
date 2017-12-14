@@ -4,7 +4,9 @@
 
 #include "Library.h"
 #include "List.h"
+#include <string>
 #include "ArrayList.h"
+#include <fstream>
 
 Library::Library() {
     this->list = new ArrayList<Book*>();
@@ -57,6 +59,24 @@ void  Library::printList() {
         std::cout<<list->getValueAt(i)->getHaveCount()<<" copies in stock"<<std::endl;
         std::cout<<list->getValueAt(i)->getWantCount()<<" copies should be in stock"<<std::endl;
         std::cout<<"Customers waiting for book: "<<list->getValueAt(i)->getWaitList()->getItemCount()<<std::endl;
+    }
+}
+
+void Library::save() {
+    std::ofstream outf("storeMemory.txt");
+    if(outf){
+        for(int i=0;i<list->itemCount();i++){
+            Book* current = list->getValueAt(i);
+            outf<<current->getTitle()<<", ";
+            outf<<current->getAuthor()<<", ";
+            outf<<std::to_string(current->getPrice())<<", ";
+            outf<<std::to_string(current->getHaveCount())<<", ";
+            outf<<std::to_string(current->getWantCount())<<", ";
+
+        }
+    }
+    else{
+        std::cout << "Error in opening storeMemory.txt";
     }
 }
 
