@@ -58,3 +58,8 @@ std::string Person::toString() {
     std::string myStr = clientName + " " + phoneNumber + " " + clientEmail + " " + contactPref;
     return myStr;
 }
+
+std::string Person::toSave() {
+    std::string myStr = clientName + ". " + phoneNumber + ". " + clientEmail + ". " + contactPref;
+    return myStr;
+}
