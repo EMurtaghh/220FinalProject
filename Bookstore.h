@@ -12,7 +12,7 @@
 
 class Bookstore {
 private:
-    Library inventory;
+    Library* inventory;
 
 public:
     Bookstore();

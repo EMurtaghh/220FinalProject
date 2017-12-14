@@ -6,11 +6,11 @@
 #include "Book.h"
 
 Bookstore::Bookstore() {
-    library = new ArrayList<Book*>();
+    inventory = new Library();
 }
 
 Bookstore::~Bookstore() {
-    delete[] library;
+    delete[] inventory;
 }
 
 void Bookstore::addBook() {
