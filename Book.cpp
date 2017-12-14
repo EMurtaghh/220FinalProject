@@ -13,7 +13,14 @@ Book::Book(std::string bookTitle, std::string bookAuthor, double bookPrice, int 
     this->wantCount=wantCount;
     this->waitList = new LinkedQueue<Person>();
 }
-//Book::Book(Book& bookToCopy){}; Will be done when needed
+Book::Book(const Book& bookToCopy){
+    this->bookTitle=bookToCopy.bookTitle;
+    this->bookAuthor=bookToCopy.bookAuthor;
+    this->bookPrice=bookToCopy.bookPrice;
+    this->haveCount=bookToCopy.haveCount;
+    this->wantCount=bookToCopy.wantCount;
+    this->waitList =bookToCopy.waitList; //maybe?
+}
 Book::~Book() {
     delete waitList;
 }

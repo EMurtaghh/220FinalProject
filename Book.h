@@ -22,7 +22,7 @@ public:
     //Constructor, Copy Constructor---------------------------------------------------------------------------------
     Book(std::string bookTitle, std::string bookAuthor, double bookPrice, int haveCount, int wantCount);
     ~Book();
-    //Book(Book& bookToCopy); Will be done when needed
+    Book(const Book& bookToCopy);
     //Getter functions----------------------------------------------------------------------------------------------
     std::string getAuthor();
     std::string getTitle();
