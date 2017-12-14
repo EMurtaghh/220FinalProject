@@ -104,5 +104,5 @@ void Bookstore::sell(std::string title) {
 }
 
 void Bookstore::quit() {
-    //ToDo write out to file and delete everything
+    inventory->save();
 }
