@@ -69,8 +69,8 @@ int Book::sell(){
         return 1;
     }
 }
-void Book::addToWaitList(Person *toAdd) {
-    this->waitList->enqueue(*toAdd);
+void Book::addToWaitList(Person toAdd) {
+    this->waitList->enqueue(toAdd);
 }
 int Book::stock(int amountToAdd){
     if((!waitList->isEmpty())&&(this->haveCount+amountToAdd)>0){

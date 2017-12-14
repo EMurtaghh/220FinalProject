@@ -116,17 +116,38 @@ void Bookstore::run() {
     std::ifstream inFile("storeMemory.txt");
     if(inFile) {
         while (inFile) {
+            char delimiter = (char)",";
             std::string bookLine;
             getline(inFile, bookLine);
-            std::stringstream line(bookLine);
+            std::stringstream ssline(bookLine);
             std::string title;
-            std::getline(line, title, ",");
-
+            getline(ssline, title, delimiter);
+            std::string author;
+            getline(ssline,author, delimiter);
+            std::string price;
+            getline(ssline,price,delimiter);
+            double priceDouble = std::stod(price);
+            std::string have;
+            getline(ssline,have,delimiter);
+            int haveInt = std::stoi(have);
+            std::string want;
+            getline(ssline,want,delimiter);
+            int wantInt = std::stoi(want);
+            Book* current = new Book(title,author,priceDouble,haveInt,wantInt);
+            while(ssline){
+                std::string name;
+                getline(ssline,name,delimiter);
+                std::string number;
+                getline(ssline,number,delimiter);
+                std::string email;
+                getline(ssline,email,delimiter);
+                std::string pref;
+                getline(ssline,pref,delimiter);
+                current->addToWaitList(Person(name,number,email,pref));
+            }
+            inventory->add(current);
         }
     }
-
-    }
-
 
     //ToDo have menu and loop running through to take input and run corresponding functions
 

@@ -43,7 +43,7 @@ public:
     int sell();
 
     //adds new person to the waitList-- just needs to call the function from Queue
-    void addToWaitList(Person* toAdd);
+    void addToWaitList(Person toAdd);
 
     //adds amountToAdd books to the have value and sells to the customers in the waitlist if there are any
     //@return the new haveCount for the book
