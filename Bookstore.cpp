@@ -105,4 +105,13 @@ void Bookstore::sell(std::string title) {
 
 void Bookstore::quit() {
     inventory->save();
+    std::cout<<"Goodbye!"<<std::endl;
+}
+
+void Bookstore::run() {
+    //ToDo read in from file
+
+    //ToDo have menu and loop running through to take input and run corresponding functions
+
+    quit();
 }
