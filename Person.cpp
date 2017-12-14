@@ -12,13 +12,14 @@ Person::Person(std::string name, std::string num, std::string email, std::string
     clientEmail=email;
     contactPref=pref;
 }
-
+//Copy Constructor
 Person::Person(){
     clientName="";
     phoneNumber="";
     clientEmail="";
     contactPref="";
 }
+//No Destructor needed
 //Getter functions----------------------------------------------------------------------------------------------
 std::string Person::getName() {
     return clientName;
