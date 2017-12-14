@@ -6,7 +6,7 @@
 #include "Book.h"
 #include <string>
 #include <exception>
-#include <ios>
+#include <iostream>
 #include <fstream>
 #include <sstream>
 
@@ -117,10 +117,11 @@ void Bookstore::run() {
     if(inFile) {
         while (inFile) {
             std::string bookLine;
-            std::stringstream Line(bookLine);
-            getline(inFile,bookLine);
+            getline(inFile, bookLine);
+            std::stringstream line(bookLine);
             std::string title;
-            getline(Line, title, ",");
+            std::getline(line, title, ",");
+
         }
     }
 
