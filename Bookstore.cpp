@@ -4,6 +4,8 @@
 
 #include "Bookstore.h"
 #include "Book.h"
+#include <string>
+#include <exception>
 
 Bookstore::Bookstore() {
     inventory = new Library();
@@ -13,29 +15,46 @@ Bookstore::~Bookstore() {
     delete[] inventory;
 }
 
+int checkIfInt(std::string value){
+    bool good = false;
+    int toReturn;
+    while(!good) {
+        good=true;
+        try {
+            toReturn = std::stoi(value);
+        }
+        catch (const std::invalid_argument &e) {
+            good= false;
+            std::cout<<"Error: Please enter a string"<<std::endl;
+        }
+    }
+    toReturn = std::stoi(value);
+    return toReturn;
+}
+
 void Bookstore::addBook() {
     std::string title;
     std::cout<<"Please enter book title:"<<std::endl;
     std::getline(std::cin,title);
-    std::cout<<title<<std::endl;
+    //std::cout<<title<<std::endl;
     std::string author;
     std::cout<<"Please enter author:"<<std::endl;
     std::getline(std::cin,author);
-    std::cout<<author<<std::endl;
-    double price;
+    //std::cout<<author<<std::endl;
+    std::string price;
     std::cout<<"Please enter book price:"<<std::endl;
-    std::cin>>price;
-    std::cout<<price<<std::endl;
-    int have;
+    std::getline(std::cin,price);
+    //std::cout<<price<<std::endl;
+    std::string have;
     std::cout<<"Please enter quantity have:"<<std::endl;
-    std::cin>>have;
-    std::cout<<have<<std::endl;
-    int want;
+    std::getline(std::cin,have);
+    //std::cout<<have<<std::endl;
+    std::string want;
     std::cout<<"Please enter quantity want:"<<std::endl;
-    std::cin>>want;
-    std::cout<<want<<std::endl;
+    std::getline(std::cin,want);
+    //std::cout<<want<<std::endl;
     Book* bookToAdd = new Book(title,author,price,have,want);
-    library->insertAtEnd(bookToAdd);
+    inventory->add(bookToAdd);
 }
 
 void Bookstore::printLibrary() {
