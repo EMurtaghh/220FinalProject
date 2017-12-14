@@ -103,3 +103,6 @@ void Bookstore::sell(std::string title) {
     //ToDo maybe print info for book?
 }
 
+void Bookstore::quit() {
+    //ToDo write out to file and delete everything
+}
