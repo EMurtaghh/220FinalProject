@@ -89,3 +89,17 @@ void Bookstore::addBook() {
 void Bookstore::printLibrary() {
     inventory->printList();
 }
+
+void Bookstore::printBookInfo(std::string title) {
+    inventory->getInfo(title);
+}
+
+
+void Bookstore::sell(std::string title) {
+    int whatHappened = inventory->sell(title);
+    if(whatHappened==0){
+        //ToDo prompt for customer info and add person to books waitlist - since allvalues are string dont need to check them except maybe preference
+    }
+    //ToDo maybe print info for book?
+}
+

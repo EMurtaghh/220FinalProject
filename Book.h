@@ -51,7 +51,7 @@ public:
 
     //returns a printable version of the book with all info that should be shown when the book is listed
     std::string toString();
-    
+
 
 
 
