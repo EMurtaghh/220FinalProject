@@ -6,6 +6,8 @@
 #include "Book.h"
 #include <string>
 #include <exception>
+#include <ios>
+#include <fstream>
 
 Bookstore::Bookstore() {
     inventory = new Library();
@@ -110,6 +112,13 @@ void Bookstore::quit() {
 
 void Bookstore::run() {
     //ToDo read in from file
+    std::ifstream inFile("storeMemory.txt");
+    while(inFile){
+        std::string bookLine;
+        std::string title;
+        
+    }
+
 
     //ToDo have menu and loop running through to take input and run corresponding functions
 
