@@ -13,6 +13,9 @@ Library::Library() {
 }
 
 Library::~Library(){
+    for (int i = 0; i < list->itemCount() ; ++i) {
+        delete list->getValueAt(i);
+    }
     delete list;
 }
 
