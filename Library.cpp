@@ -72,8 +72,11 @@ void Library::save() {
             outf<<std::to_string(current->getPrice())<<", ";
             outf<<std::to_string(current->getHaveCount())<<", ";
             outf<<std::to_string(current->getWantCount())<<", ";
-
+            while(!current->getWaitList()->isEmpty()){
+                outf<<current->getWaitList()->dequeue().toSave()<<", ";
+            }
         }
+        outf.close();
     }
     else{
         std::cout << "Error in opening storeMemory.txt";
