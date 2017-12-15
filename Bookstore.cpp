@@ -19,7 +19,8 @@ Bookstore::~Bookstore() {
 }
 
 void Bookstore::help() {
-    std::cout<<"Command options:"<<std::endl;
+    std::cout<<"Command options(case does not matter but be sure to not enter any spaces):"<<std::endl;
+    std::cout<<"    H - help"<<std::endl;
     std::cout<<"    I - inquire about a specific book"<<std::endl;
     std::cout<<"    L - list the information for all books being sold"<<std::endl;
     std::cout<<"    A - add a new book to be sold"<<std::endl;
@@ -30,6 +31,15 @@ void Bookstore::help() {
     std::cout<<"    Q - save and quit program"<<std::endl;
     std::cout<<" "<<std::endl;
 
+}
+
+int checkValidCommand(std::string c){
+    if(c=="I"||c=="i"||c=="L"||c=="l"||c=="A"||c=="a"||c=="M"||c=="m"||c=="O"||c=="o"||c=="D"||c=="d"||c=="R"||c=="r"||c=="Q"||c=="q"||c=="H"||c=="h"){
+        return 1;
+    }
+    else{
+        return 0;
+    }
 }
 
 int checkIfInt(std::string value){
@@ -174,6 +184,31 @@ void Bookstore::run() {
     std::cout<<"Welcome to 220 Books!"<<std::endl;
     std::cout<<" "<<std::endl;
     //menu
+    help();
+    std::string command = "h";
+    while(command!="q"&&command!="Q") {
+        std::cout << "Please enter a command: ";
+        getline(std::cin, command);
+        int ok = ::checkValidCommand(command);
+        if (ok == 0) {
+            std::cout<<"Invalid command! Please make sure to not enter spaces in your input!"<<std::endl;
+            std::cout<<"Enter 'H' to see available commands"<<std::endl;
+            std::cout<<" "<<std::endl;
+        }
+        else{
+            if(command=="H"||command=="h"){
+                help();
+            }
+            else if(command=="I"||command=="i"){
+                std::cout<<"Please enter title: ";
+                std::string title;
+                getline(std::cin,title);
+                std::cout<<" "<<std::endl;
+                inventory->getInfo(title);
+            }
+            else if()
+        }
+    }
 
     //ToDo have menu and loop running through to take input and run corresponding functions
 
