@@ -25,6 +25,7 @@ int main() {
     */
 
     //testing person toString
-    Person* person = new Person("Bradley Keith","(607)749-0105","bnkeith.20@gmail.com","email");
-    std::cout<<person->toString()<<std::endl;
+    Bookstore myStore = Bookstore();
+    myStore.run();
+    delete myStore;
 }
