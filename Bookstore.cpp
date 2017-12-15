@@ -205,6 +205,32 @@ void Bookstore::modify(std::string title) {
     }
 }
 
+void Bookstore::order(std::string fileName) {
+    inventory->order(fileName);
+}
+
+void Bookstore::returnBooks(std::string fileName) {
+    inventory->returnBooks(fileName);
+}
+
+void Bookstore::delivery(std::string fileName) {
+    std::ifstream inFile(fileName);
+    if(inFile){
+        while(inFile) {
+            char delimiter = (char) ",";
+            std::string bookLine;
+            getline(inFile, bookLine);
+            std::stringstream ssline(bookLine);
+            std::string title;
+            getline(ssline, title, delimiter);
+            std::string count;
+            getline(ssline, count, delimiter);
+            int countint = std::stoi(count);
+            inventory->stock(title, countint);
+        }
+    }
+}
+
 void Bookstore::run() {
     //Read in from memory file
     std::ifstream inFile("storeMemory.txt");
@@ -287,13 +313,13 @@ void Bookstore::run() {
                 }
             }
             else if(command=="O"||command=="o"){
-                order();
+                order("orderFile");
             }
             else if(command=="D"||command=="d"){
-                delivery();
+                delivery("deliveryFile");
             }
             else if(command=="R"||command=="r"){
-                returnBooks();
+                returnBooks("returnFile");
             }
         }
         std::cout<<" "<<std::endl;

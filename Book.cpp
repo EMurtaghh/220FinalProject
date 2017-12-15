@@ -79,16 +79,16 @@ int Book::sell(){
 void Book::addToWaitList(Person toAdd) {
     this->waitList->enqueue(toAdd);
 }
+
 int Book::stock(int amountToAdd){
-    if((!waitList->isEmpty())&&(this->haveCount+amountToAdd)>0){
-        this->waitList->dequeue();
-        amountToAdd--;
+    haveCount=haveCount+amountToAdd;
+    if((!waitList->isEmpty())&&(this->haveCount)>0){
+        while(!waitList->isEmpty() && haveCount>0) {
+            this->waitList->dequeue();
+            sell();
+        }
     }
-    if(amountToAdd>0){
-        return this->haveCount+amountToAdd;
-    }else{
-        return this->haveCount;
-    }
+    return haveCount;
 }
 std::string Book::toString() {
     return this->bookTitle+" by "+this->bookAuthor+" is $"+std::to_string(this->bookPrice);
