@@ -296,6 +296,7 @@ void Bookstore::run() {
                 returnBooks();
             }
         }
+        std::cout<<" "<<std::endl;
     }
 
     quit();
