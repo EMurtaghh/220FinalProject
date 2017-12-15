@@ -146,7 +146,63 @@ void Bookstore::quit() {
 
 void Bookstore::modify(std::string title) {
     printBookInfo(title);
-    
+    std::cout<<"What would you like to edit?"<<std::endl;
+    std::cout<<"Enter 0 for title, 1 for author, 2 for price, 3 for current quantity, 4 for desired quantity."<<std::endl;
+    std::string strEnt;
+    getline(std::cin,strEnt);
+    int intEnt = checkIfInt(strEnt);
+    Book* toEdit = inventory->accessBook(title);
+    if(intEnt==0){
+        std::string newTitle;
+        std::cout<<"Enter new title: ";
+        getline(std::cin,newTitle);
+        toEdit->setTitle(newTitle);
+        std::cout<<" "<<std::endl;
+    }
+    else if(intEnt==1){
+        std::cout<<"Enter new author: ";
+        std::string newAuthor;
+        getline(std::cin,newAuthor);
+        toEdit->setAuthor(newAuthor);
+        std::cout<<" "<<std::endl;
+    }
+    else if(intEnt==2){
+        std::cout<<"Enter new price: ";
+        std::string strprice;
+        double price = -1;
+        while(price==-1){
+            getline(std::cin,strprice);
+            price = checkIfDouble(strprice);
+        }
+        toEdit->setPrice(price);
+        std::cout<<" "<<std::endl;
+    }
+    else if(intEnt==3){
+        std::cout<<"Enter new inventory quantity: ";
+        std::string strHave;
+        int have = -1;
+        while(have==-1){
+            getline(std::cin,strHave);
+            have = checkIfInt(strHave);
+        }
+        toEdit->setHaveCount(have);
+        std::cout<<" "<<std::endl;
+    }
+    else if(intEnt==4){
+        std::cout<<"Enter new quantity desired: ";
+        std::string strWant;
+        int want = -1;
+        while(want==-1){
+            getline(std::cin,strWant);
+            want=checkIfInt(strWant);
+        }
+        toEdit->setWantCount(want);
+        std::cout<<" "<<std::endl;
+    }
+    else{
+        std::cout<<"Error: invalid command"<<std::endl;
+        std::cout<<" "<<std::endl;
+    }
 }
 
 void Bookstore::run() {
@@ -223,7 +279,12 @@ void Bookstore::run() {
                 std::string title;
                 getline(std::cin,title);
                 std::cout<<" "<<std::endl;
-                modify(title);
+                if(inventory->find(title)!=-1) {
+                    modify(title);
+                }
+                else{
+                    std::cout<<"This title is not currently in our inventory try adding it"<<std::endl;
+                }
             }
             else if(command=="O"||command=="o"){
                 order();

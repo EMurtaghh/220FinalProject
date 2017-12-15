@@ -39,6 +39,12 @@ int Library::stock(std::string title, int numBooks) {
     return list->getValueAt(index)->stock(numBooks);
 }
 
+Book* Library::accessBook(std::string title) {
+    int index = find(title);
+    Book* toReturn = list->getValueAt(index);
+    return toReturn;
+}
+
 void Library::getInfo(std::string title) {
     int index=find(title);
     std::cout<<list->getValueAt(index)->getTitle()<<std::endl;
