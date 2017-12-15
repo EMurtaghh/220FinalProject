@@ -278,7 +278,6 @@ void Bookstore::run() {
                 Book *current = new Book(title, author, priceDouble, haveInt, wantInt);
                 if (ssline) {
                     while (ssline) {
-                        if(ssline.rdbuf()->in_avail() != 0) {
                             std::string name;
                             getline(ssline, name, delimiter);
                             std::string number;
@@ -288,7 +287,6 @@ void Bookstore::run() {
                             std::string pref;
                             getline(ssline, pref, delimiter);
                             current->addToWaitList(Person(name, number, email, pref));
-                        }
                     }
                 }
                 inventory->add(current);
