@@ -46,6 +46,7 @@ int checkIfInt(std::string value){
     try {
         int toReturn = std::stoi(value);
         if(toReturn<0){
+            std::cout<<"Error: Please enter an integer"<<std::endl;
             return -1;
         }
         return toReturn;
@@ -59,13 +60,14 @@ int checkIfInt(std::string value){
 double checkIfDouble(std::string value){
     try{
         double toReturn = std::stod(value);
-        if(toReturn<0){
-            return -1;
-        }
         toReturn = toReturn*100;
         int dollars = (int)toReturn;
         toReturn = (double)dollars;
         toReturn = toReturn/100;
+        if(toReturn<0){
+            std::cout<<"Error: Please enter a real number"<<std::endl;
+            return -1;
+        }
         return toReturn;
     }
     catch(const std::invalid_argument& e) {
@@ -88,7 +90,7 @@ void Bookstore::addBook() {
     std::cout<<"Please enter book price:"<<std::endl;
     while(priced==-1) {
         std::getline(std::cin, price);
-        ::checkIfDouble(price);
+        priced=::checkIfDouble(price);
     }
     //std::cout<<price<<std::endl;
     std::string have;
@@ -110,7 +112,8 @@ void Bookstore::addBook() {
     Book* bookToAdd = new Book(title,author,priced,haveint,wantint);
     inventory->add(bookToAdd);
 
-    //ToDo print out info of book added and offer for edits to be made
+    std::cout<<"Book added!"<<std::endl;
+    std::cout<<" "<<std::endl;
 }
 
 void Bookstore::printLibrary() {
