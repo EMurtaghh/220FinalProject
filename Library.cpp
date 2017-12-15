@@ -83,7 +83,7 @@ void  Library::printList() {
         std::cout<<"    Inventory is empty"<<std::endl;
         std::cout<<" "<<std::endl;
     }
-    for(int i = 0;1<list->itemCount();i++){
+    for(int i = 0;i<list->itemCount();i++){
         std::cout<<"    "<<list->getValueAt(i)->getTitle()<<std::endl;
         std::cout<<"    "<<"by "<<list->getValueAt(i)->getAuthor()<<std::endl;
         std::cout<<"    "<<"$"<<list->getValueAt(i)->getPrice()<<std::endl;

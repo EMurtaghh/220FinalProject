@@ -242,35 +242,37 @@ void Bookstore::run() {
             char delimiter = ',';
             std::string bookLine;
             getline(inFile, bookLine);
-            std::stringstream ssline(bookLine);
-            std::string title;
-            getline(ssline, title, delimiter);
-            std::string author;
-            getline(ssline,author, delimiter);
-            std::string price;
-            getline(ssline,price,delimiter);
-            double priceDouble = std::stod(price);
-            std::string have;
-            getline(ssline,have,delimiter);
-            int haveInt = std::stoi(have);
-            std::string want;
-            getline(ssline,want,delimiter);
-            int wantInt = std::stoi(want);
-            Book* current = new Book(title,author,priceDouble,haveInt,wantInt);
-            if(ssline) {
-                while (ssline) {
-                    std::string name;
-                    getline(ssline, name, delimiter);
-                    std::string number;
-                    getline(ssline, number, delimiter);
-                    std::string email;
-                    getline(ssline, email, delimiter);
-                    std::string pref;
-                    getline(ssline, pref, delimiter);
-                    current->addToWaitList(Person(name, number, email, pref));
+            if(bookLine!="") {
+                std::stringstream ssline(bookLine);
+                std::string title;
+                getline(ssline, title, delimiter);
+                std::string author;
+                getline(ssline, author, delimiter);
+                std::string price;
+                getline(ssline, price, delimiter);
+                double priceDouble = std::stod(price);
+                std::string have;
+                getline(ssline, have, delimiter);
+                int haveInt = std::stoi(have);
+                std::string want;
+                getline(ssline, want, delimiter);
+                int wantInt = std::stoi(want);
+                Book *current = new Book(title, author, priceDouble, haveInt, wantInt);
+                if (ssline) {
+                    while (ssline) {
+                        std::string name;
+                        getline(ssline, name, delimiter);
+                        std::string number;
+                        getline(ssline, number, delimiter);
+                        std::string email;
+                        getline(ssline, email, delimiter);
+                        std::string pref;
+                        getline(ssline, pref, delimiter);
+                        current->addToWaitList(Person(name, number, email, pref));
+                    }
                 }
+                inventory->add(current);
             }
-            inventory->add(current);
         }
     }
     std::cout<<"Welcome to 220 Books!"<<std::endl;
