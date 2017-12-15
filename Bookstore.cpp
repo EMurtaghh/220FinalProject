@@ -144,6 +144,11 @@ void Bookstore::quit() {
     std::cout<<"Goodbye!"<<std::endl;
 }
 
+void Bookstore::modify(std::string title) {
+    printBookInfo(title);
+    
+}
+
 void Bookstore::run() {
     //Read in from memory file
     std::ifstream inFile("storeMemory.txt");
@@ -206,11 +211,31 @@ void Bookstore::run() {
                 std::cout<<" "<<std::endl;
                 inventory->getInfo(title);
             }
-            else if()
+            else if(command=="L"||command=="l"){
+                printLibrary();
+                std::cout<<" "<<std::endl;
+            }
+            else if(command=="A"||command=="a"){
+                addBook();
+            }
+            else if(command=="M"||command=="m"){
+                std::cout<<"Please enter title to modify: ";
+                std::string title;
+                getline(std::cin,title);
+                std::cout<<" "<<std::endl;
+                modify(title);
+            }
+            else if(command=="O"||command=="o"){
+                order();
+            }
+            else if(command=="D"||command=="d"){
+                delivery();
+            }
+            else if(command=="R"||command=="r"){
+                returnBooks();
+            }
         }
     }
-
-    //ToDo have menu and loop running through to take input and run corresponding functions
 
     quit();
 }
