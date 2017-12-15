@@ -96,12 +96,27 @@ void Library::save() {
             while(!current->getWaitList()->isEmpty()){
                 outf<<current->getWaitList()->dequeue().toSave()<<", ";
             }
+            outf<<std::endl;
         }
         outf.close();
     }
     else{
         std::cout << "Error in opening storeMemory.txt";
     }
+}
+
+void Library::order(std::string fileName) {
+    std::ofstream outf(fileName);
+    if(outf){
+        for (int i = 0; i < list->itemCount(); ++i) {
+            if(list->getValueAt(i)->getHaveCount()<list->getValueAt(i)->getWantCount()){
+                outf<<list->getValueAt(i)->getTitle()<<", "<<(list->getValueAt(i)->getWantCount()-list->getValueAt(i)->getHaveCount())<<std::endl;
+
+            }
+        }
+    }
+    std::cout<<"Order complete"<<std::endl;
+    std::cout<<" "<<std::endl;
 }
 
 int Library::find(std::string title) {//probably want to implement binfind later
