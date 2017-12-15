@@ -1,2 +1,4 @@
-Frankenstein, Mary Shelley, 8.520000, 4, 3, 
-Harry Potter and the Sorcerer's Stone,        J.K. Rowling, 7.290000, 2, 4, 
+Harry Potter and the Sorcerer's Stone,           J.K. Rowling, 7.290000, 2, 4,    ,   ,        ,  ,   ,   , 
+Frankenstein,    Mary Shelley, 8.520000, 4, 3,    ,   ,        ,  ,   ,   , 
+Hunger Games,  Suzanne Collins, 5.630000, 6, 6,  , ,  , 
+Treasure Island,  Robert Louis Stevenson, 12.180000, 5, 3,  , ,  , 

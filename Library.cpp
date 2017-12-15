@@ -21,16 +21,18 @@ Library::~Library(){
 
 //may want to change later to make recursive for efficiency
 void Library::add(Book *toAdd) {
-    int index = 0;
     if(!list->isEmpty()) {
-        while ((toAdd->getTitle() > list->getValueAt(index)->getTitle()) && (index < list->itemCount())) {
-            index++;
+        int addAt = 0;
+        for(int index = list->itemCount()-1; index>=0;index--){
+            if(toAdd->getTitle()>list->getValueAt(index)->getTitle()){
+                addAt = index;
+            }
         }
-        if (toAdd->getTitle() == list->getValueAt(index)->getTitle()) {
-            list->getValueAt(index)->stock(toAdd->getHaveCount());
+        if (toAdd->getTitle() == list->getValueAt(addAt)->getTitle()) {
+            list->getValueAt(addAt)->stock(toAdd->getHaveCount());
             delete toAdd;
         } else {
-            list->insertAt(toAdd, index);
+            list->insertAt(toAdd, addAt);
         }
     }
     else{
