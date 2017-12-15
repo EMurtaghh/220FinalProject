@@ -13,11 +13,18 @@ Person::Person(std::string name, std::string num, std::string email, std::string
     contactPref=pref;
 }
 //Copy Constructor
-Person::Person(Person toCopy){
+Person::Person(const Person& toCopy){
     clientName=toCopy.clientName;
     phoneNumber=toCopy.phoneNumber;
     clientEmail=toCopy.clientEmail;
     contactPref=toCopy.contactPref;
+}
+
+Person::Person() {
+    clientName="";
+    phoneNumber="";
+    clientEmail="";
+    contactPref="";
 }
 //No Destructor needed
 //Getter functions----------------------------------------------------------------------------------------------

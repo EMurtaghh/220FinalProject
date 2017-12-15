@@ -93,6 +93,6 @@ bool LinkedQueue<T>::isEmpty(){
 }
 
 template <class T>
-int LinkedQueue::getItemCount() {
+int LinkedQueue<T>::getItemCount() {
     return itemCount;
 }

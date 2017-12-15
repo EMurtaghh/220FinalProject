@@ -217,7 +217,7 @@ void Bookstore::delivery(std::string fileName) {
     std::ifstream inFile(fileName);
     if(inFile){
         while(inFile) {
-            char delimiter = (char) ",";
+            char delimiter = ',';
             std::string bookLine;
             getline(inFile, bookLine);
             std::stringstream ssline(bookLine);
@@ -236,7 +236,7 @@ void Bookstore::run() {
     std::ifstream inFile("storeMemory.txt");
     if(inFile) {
         while (inFile) {
-            char delimiter = (char)",";
+            char delimiter = ',';
             std::string bookLine;
             getline(inFile, bookLine);
             std::stringstream ssline(bookLine);

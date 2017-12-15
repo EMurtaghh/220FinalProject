@@ -27,5 +27,4 @@ int main() {
     //testing person toString
     Bookstore myStore = Bookstore();
     myStore.run();
-    delete myStore;
 }
