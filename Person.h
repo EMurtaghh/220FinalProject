@@ -17,7 +17,7 @@ private:
 public:
     //Constructor, Copy Constructor---------------------------------------------------------------------------------
     Person(std::string name, std::string num, std::string email, std::string pref);
-    Person();
+    Person(Person toCopy);
     //Getter functions----------------------------------------------------------------------------------------------
     std::string getName();
     std::string getNumber();

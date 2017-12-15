@@ -51,7 +51,12 @@ void Library::getInfo(std::string title) {
 
 int Library::sell(std::string title) {
     int index = find(title);
-    return list->getValueAt(index)->sell();
+    if(index!=-1) {
+        return list->getValueAt(index)->sell();
+    }
+    else{
+        return -1;
+    }
 }
 
 void  Library::printList() {

@@ -17,6 +17,7 @@ private:
 public:
     Bookstore();
     ~Bookstore();
+    void help();
     void run();
     void printBookInfo(std::string title);
     void modify(std::string title);

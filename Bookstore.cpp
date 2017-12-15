@@ -18,6 +18,20 @@ Bookstore::~Bookstore() {
     delete[] inventory;
 }
 
+void Bookstore::help() {
+    std::cout<<"Command options:"<<std::endl;
+    std::cout<<"    I - inquire about a specific book"<<std::endl;
+    std::cout<<"    L - list the information for all books being sold"<<std::endl;
+    std::cout<<"    A - add a new book to be sold"<<std::endl;
+    std::cout<<"    M - modify the information for a specific title"<<std::endl;
+    std::cout<<"    O - place an order for books"<<std::endl;
+    std::cout<<"    D - add books from a delivery to inventory"<<std::endl;
+    std::cout<<"    R - return excess copies"<<std::endl;
+    std::cout<<"    Q - save and quit program"<<std::endl;
+    std::cout<<" "<<std::endl;
+
+}
+
 int checkIfInt(std::string value){
     try {
         int toReturn = std::stoi(value);
@@ -101,7 +115,16 @@ void Bookstore::printBookInfo(std::string title) {
 void Bookstore::sell(std::string title) {
     int whatHappened = inventory->sell(title);
     if(whatHappened==0){
-        //ToDo prompt for customer info and add person to books waitlist - since allvalues are string dont need to check them except maybe preference
+        std::cout<<"We are currently out of stock Please enter your info to be placed on the wait list"<<std::endl;
+
+    }
+    else if(whatHappened==-1){
+        std::cout<<"We do not currently sell this book"<<std::endl;
+        std::cout<<" "<<std::endl;
+    }
+    else{
+        std::cout<<"Enjoy "<<title<<"!"<<std::endl;
+        std::cout<<" "<<std::endl;
     }
     //ToDo maybe print info for book?
 }
@@ -112,7 +135,7 @@ void Bookstore::quit() {
 }
 
 void Bookstore::run() {
-    //ToDo read in from file
+    //Read in from memory file
     std::ifstream inFile("storeMemory.txt");
     if(inFile) {
         while (inFile) {
@@ -148,6 +171,9 @@ void Bookstore::run() {
             inventory->add(current);
         }
     }
+    std::cout<<"Welcome to 220 Books!"<<std::endl;
+    std::cout<<" "<<std::endl;
+    //menu
 
     //ToDo have menu and loop running through to take input and run corresponding functions
 
