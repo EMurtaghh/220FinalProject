@@ -122,7 +122,9 @@ void Library::order(std::string fileName) {
         for (int i = 0; i < list->itemCount(); ++i) {
             int wantv = list->getValueAt(i)->getWantCount();
             int havev = list->getValueAt(i)->getHaveCount();
+            int copiesWaiting = list->getValueAt(i)->getWaitList()->getItemCount();
             int toOrder = wantv-havev;
+            toOrder = toOrder +copiesWaiting;
             if(havev<wantv){
                 outf<<list->getValueAt(i)->getTitle()<<", "<<toOrder<<std::endl;
 
