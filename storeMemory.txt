@@ -1,1 +1,2 @@
-Harry Potter and the Sorcerer's Stone,      J.K. Rowling, 7.290000, 3, 4,   ,  ,     , , ,  , 
+Frankenstein, Mary Shelley, 8.520000, 4, 3, 
+Harry Potter and the Sorcerer's Stone,        J.K. Rowling, 7.290000, 2, 4, 
