@@ -24,6 +24,7 @@ void Bookstore::help() {
     std::cout<<"    I - inquire about a specific book"<<std::endl;
     std::cout<<"    L - list the information for all books being sold"<<std::endl;
     std::cout<<"    A - add a new book to be sold"<<std::endl;
+    std::cout<<"    S - sell a book"<<std::endl;
     std::cout<<"    M - modify the information for a specific title"<<std::endl;
     std::cout<<"    O - place an order for books"<<std::endl;
     std::cout<<"    D - add books from a delivery to inventory"<<std::endl;
@@ -34,7 +35,7 @@ void Bookstore::help() {
 }
 
 int checkValidCommand(std::string c){
-    if(c=="I"||c=="i"||c=="L"||c=="l"||c=="A"||c=="a"||c=="M"||c=="m"||c=="O"||c=="o"||c=="D"||c=="d"||c=="R"||c=="r"||c=="Q"||c=="q"||c=="H"||c=="h"){
+    if(c=="I"||c=="i"||c=="L"||c=="l"||c=="A"||c=="a"||c=="M"||c=="m"||c=="O"||c=="o"||c=="D"||c=="d"||c=="R"||c=="r"||c=="Q"||c=="q"||c=="H"||c=="h"||c=="S"||c=="s"){
         return 1;
     }
     else{
@@ -129,7 +130,23 @@ void Bookstore::sell(std::string title) {
     int whatHappened = inventory->sell(title);
     if(whatHappened==0){
         std::cout<<"We are currently out of stock Please enter your info to be placed on the wait list"<<std::endl;
-
+        std::cout<<"Name: ";
+        std::string name;
+        getline(std::cin,name);
+        std::cout<<" "<<std::endl;
+        std::cout<<"Phone number: ";
+        std::string number;
+        getline(std::cin,number);
+        std::cout<<" "<<std::endl;
+        std::cout<<"Email: ";
+        std::string email;
+        getline(std::cin,email);
+        std::cout<<" "<<std::endl;
+        std::cout<<"Contact Prefference";
+        std::string pref;
+        getline(std::cin,pref);
+        std::cout<<" "<<std::endl;
+        inventory->accessBook(title)->addToWaitList(Person(name,number,email,pref));
     }
     else if(whatHappened==-1){
         std::cout<<"We do not currently sell this book"<<std::endl;
@@ -139,7 +156,6 @@ void Bookstore::sell(std::string title) {
         std::cout<<"Enjoy "<<title<<"!"<<std::endl;
         std::cout<<" "<<std::endl;
     }
-    //ToDo maybe print info for book?
 }
 
 void Bookstore::quit() {
@@ -223,13 +239,15 @@ void Bookstore::delivery(std::string fileName) {
             char delimiter = ',';
             std::string bookLine;
             getline(inFile, bookLine);
-            std::stringstream ssline(bookLine);
-            std::string title;
-            getline(ssline, title, delimiter);
-            std::string count;
-            getline(ssline, count, delimiter);
-            int countint = std::stoi(count);
-            inventory->stock(title, countint);
+            if(bookLine!="") {
+                std::stringstream ssline(bookLine);
+                std::string title;
+                getline(ssline, title, delimiter);
+                std::string count;
+                getline(ssline, count, delimiter);
+                int countint = std::stoi(count);
+                inventory->stock(title, countint);
+            }
         }
     }
 }
@@ -260,15 +278,17 @@ void Bookstore::run() {
                 Book *current = new Book(title, author, priceDouble, haveInt, wantInt);
                 if (ssline) {
                     while (ssline) {
-                        std::string name;
-                        getline(ssline, name, delimiter);
-                        std::string number;
-                        getline(ssline, number, delimiter);
-                        std::string email;
-                        getline(ssline, email, delimiter);
-                        std::string pref;
-                        getline(ssline, pref, delimiter);
-                        current->addToWaitList(Person(name, number, email, pref));
+                        if(ssline.rdbuf()->in_avail() != 0) {
+                            std::string name;
+                            getline(ssline, name, delimiter);
+                            std::string number;
+                            getline(ssline, number, delimiter);
+                            std::string email;
+                            getline(ssline, email, delimiter);
+                            std::string pref;
+                            getline(ssline, pref, delimiter);
+                            current->addToWaitList(Person(name, number, email, pref));
+                        }
                     }
                 }
                 inventory->add(current);
@@ -327,6 +347,13 @@ void Bookstore::run() {
             }
             else if(command=="R"||command=="r"){
                 returnBooks("returnFile");
+            }
+            else if(command=="S"||command=="s"){
+                std::cout<<"Please enter title to sell: ";
+                std::string title;
+                getline(std::cin,title);
+                std::cout<<" "<<std::endl;
+                sell(title);
             }
         }
         std::cout<<" "<<std::endl;

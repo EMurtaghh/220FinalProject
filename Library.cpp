@@ -120,8 +120,11 @@ void Library::order(std::string fileName) {
     std::ofstream outf(fileName);
     if(outf){
         for (int i = 0; i < list->itemCount(); ++i) {
-            if(list->getValueAt(i)->getHaveCount()<list->getValueAt(i)->getWantCount()){
-                outf<<list->getValueAt(i)->getTitle()<<", "<<(list->getValueAt(i)->getWantCount()-list->getValueAt(i)->getHaveCount())<<std::endl;
+            int wantv = list->getValueAt(i)->getWantCount();
+            int havev = list->getValueAt(i)->getHaveCount();
+            int toOrder = wantv-havev;
+            if(havev<wantv){
+                outf<<list->getValueAt(i)->getTitle()<<", "<<toOrder<<std::endl;
 
             }
         }
@@ -134,9 +137,13 @@ void Library::returnBooks(std::string fileName) {
     std::ofstream outf(fileName);
     if(outf){
         for (int i = 0; i < list->itemCount(); ++i) {
-            if(list->getValueAt(i)->getHaveCount()>list->getValueAt(i)->getWantCount()){
-                outf<<list->getValueAt(i)->getTitle()<<", "<<(list->getValueAt(i)->getHaveCount()-list->getValueAt(i)->getWantCount())<<std::endl;
-                list->getValueAt(i)->setHaveCount(list->getValueAt(i)->getHaveCount()-list->getValueAt(i)->getWantCount());
+            int wantv = list->getValueAt(i)->getWantCount();
+            int havev = list->getValueAt(i)->getHaveCount();
+            int toReturn = havev-wantv;
+            if(havev>wantv){
+                outf<<list->getValueAt(i)->getTitle()<<", "<<toReturn<<", "<<std::endl;
+                havev=havev-toReturn;
+                list->getValueAt(i)->setHaveCount(havev);
             }
         }
     }
