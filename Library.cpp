@@ -22,17 +22,23 @@ Library::~Library(){
 //may want to change later to make recursive for efficiency
 void Library::add(Book *toAdd) {
     if(!list->isEmpty()) {
-        int addAt = 0;
-        for(int index = list->itemCount()-1; index>=0;index--){
-            if(toAdd->getTitle()>list->getValueAt(index)->getTitle()){
-                addAt = index;
+        int index = 0;
+        int cont = 0;
+        while(cont==0){
+            if(toAdd->getTitle()<list->getValueAt(index)->getTitle()){
+                cont=1;
+            }
+            index++;
+            if(!(index<list->itemCount())){
+                cont=1;
             }
         }
-        if (toAdd->getTitle() == list->getValueAt(addAt)->getTitle()) {
-            list->getValueAt(addAt)->stock(toAdd->getHaveCount());
+        index--;
+        if (toAdd->getTitle() == list->getValueAt(index)->getTitle()) {
+            list->getValueAt(index)->stock(toAdd->getHaveCount());
             delete toAdd;
         } else {
-            list->insertAt(toAdd, addAt);
+            list->insertAt(toAdd, index);
         }
     }
     else{
@@ -101,13 +107,13 @@ void Library::save() {
     if(outf){
         for(int i=0;i<list->itemCount();i++){
             Book* current = list->getValueAt(i);
-            outf<<current->getTitle()<<", ";
-            outf<<current->getAuthor()<<", ";
-            outf<<std::to_string(current->getPrice())<<", ";
-            outf<<std::to_string(current->getHaveCount())<<", ";
-            outf<<std::to_string(current->getWantCount())<<", ";
+            outf<<current->getTitle()<<",";
+            outf<<current->getAuthor()<<",";
+            outf<<std::to_string(current->getPrice())<<",";
+            outf<<std::to_string(current->getHaveCount())<<",";
+            outf<<std::to_string(current->getWantCount())<<",";
             while(!current->getWaitList()->isEmpty()){
-                outf<<current->getWaitList()->dequeue().toSave()<<", ";
+                outf<<current->getWaitList()->dequeue().toSave()<<",";
             }
             outf<<std::endl;
         }

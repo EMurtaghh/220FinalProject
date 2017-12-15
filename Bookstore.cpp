@@ -276,7 +276,7 @@ void Bookstore::run() {
                 getline(ssline, want, delimiter);
                 int wantInt = std::stoi(want);
                 Book *current = new Book(title, author, priceDouble, haveInt, wantInt);
-                if (!ssline.rdbuf()->in_avail() == 0) {
+                if (!ssline.rdbuf()->in_avail() > 1) {
                     while (ssline) {
                         std::string name;
                         getline(ssline, name, delimiter);
@@ -289,8 +289,6 @@ void Bookstore::run() {
                         current->addToWaitList(Person(name, number, email, pref));
                     }
                 }
-
-
                 inventory->add(current);
             }
         }
