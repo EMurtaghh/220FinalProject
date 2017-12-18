@@ -23,17 +23,15 @@ Library::~Library(){
 void Library::add(Book *toAdd) {
     if(!list->isEmpty()) {
         int index = 0;
-        int cont = 0;
-        while(cont==0){
-            if(toAdd->getTitle()<list->getValueAt(index)->getTitle()){
-                cont=1;
+        int i = 0;
+
+        while(i<list->itemCount()){
+            if(toAdd->getTitle()>list->getValueAt(index)->getTitle()){
+                index++;
             }
-            index++;
-            if(!(index<list->itemCount())){
-                cont=1;
-            }
+            i++;
         }
-        index--;
+
         if (toAdd->getTitle() == list->getValueAt(index)->getTitle()) {
             list->getValueAt(index)->stock(toAdd->getHaveCount());
             delete toAdd;

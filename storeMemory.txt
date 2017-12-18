@@ -1,4 +1,5 @@
-Harry Potter and the Sorcerer's Stone, J.K. Rowling,7.290000,0,4,Brad Keith,6077490105,bkeith@ithaca.edu,email,
-Hunger Games, Suzanne Collins,5.630000,6,6,
-Treasure Island, Robert Louis Stevenson,12.180000,3,3,
 Frankenstein, Mary Shelley,8.520000,3,3,
+Harry Potter and the Sorcerer's Stone, J.K. Rowling,7.290000,0,4,
+Hunger Games, Suzanne Collins,5.630000,6,6,
+The Hobbit,J.R.R. Tolkein,8.270000,3,5,
+Treasure Island, Robert Louis Stevenson,12.180000,3,3,
